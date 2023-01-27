@@ -6,7 +6,7 @@
 }
 
 table td {
-  width: 200px;
+  width: 226px;
   height: 30px;
   background-color: lightblue;
   text-align: center;
@@ -15,4 +15,23 @@ table td {
 
 table td button {
   font-size: 15px;
+  cursor: pointer;
+}
+
+.addForm {
+  margin-bottom: 30px;
+}
+
+.addForm input {
+  width: 220px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.addForm button {
+  width: 140px;
+  color: white;
+  background-color: lightgreen;
+  border: none;
+  cursor: pointer;
 }
