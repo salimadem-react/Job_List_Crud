@@ -1,0 +1,18 @@
+.crud {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table td {
+  width: 200px;
+  height: 30px;
+  background-color: lightblue;
+  text-align: center;
+  color: white;
+}
+
+table td button {
+  font-size: 15px;
+}
