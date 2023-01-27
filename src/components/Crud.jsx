@@ -21,7 +21,7 @@ export default function Crud() {
   return (
     <div className="crud">
       <div>
-        <AddList />
+        <AddList setLists={setLists} />
         <table>
           {lists.map((current) => (
             <tr>
