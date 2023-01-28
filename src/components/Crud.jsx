@@ -55,9 +55,40 @@ export default function Crud() {
                 <EditList current={current} lists={lists} setLists={setLists} />
               ) : (
                 <tr>
-                  <td>{current.job}</td>
-                  <td>{current.priority}</td>
-                  <td>
+                  <td
+                    style={{
+                      backgroundColor:
+                        current.priority === "Urgent"
+                          ? "red"
+                          : current.priority === "Regular"
+                          ? "#FFD700"
+                          : "lightblue",
+                    }}
+                  >
+                    {current.job}
+                  </td>
+                  <td
+                    style={{
+                      backgroundColor:
+                        current.priority === "Urgent"
+                          ? "red"
+                          : current.priority === "Regular"
+                          ? "#FFD700"
+                          : "lightblue",
+                    }}
+                  >
+                    {current.priority}
+                  </td>
+                  <td
+                    style={{
+                      backgroundColor:
+                        current.priority === "Urgent"
+                          ? "red"
+                          : current.priority === "Regular"
+                          ? "#FFD700"
+                          : "lightblue",
+                    }}
+                  >
                     <button
                       className="edit"
                       onClick={() => handleEdit(current.id)}
