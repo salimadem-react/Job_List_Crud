@@ -24,6 +24,11 @@ export default function Crud() {
     setUpdateState(id);
   }
 
+  function handleDelete(id) {
+    const newlist = lists.filter((li) => li.id !== id);
+    setLists(newlist);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -35,13 +40,17 @@ export default function Crud() {
     setUpdateState(-1);
   }
 
+  const strDescending = [...lists].sort((a) =>
+    a.priority === "Urgent" ? -1 : 1
+  );
+
   return (
     <div className="crud">
       <div>
         <AddList setLists={setLists} />
         <form onSubmit={handleSubmit}>
           <table>
-            {lists.map((current) =>
+            {strDescending.map((current) =>
               updateState === current.id ? (
                 <EditList current={current} lists={lists} setLists={setLists} />
               ) : (
@@ -55,7 +64,13 @@ export default function Crud() {
                     >
                       Edit
                     </button>
-                    <button className="delete">Delete</button>
+                    <button
+                      className="delete"
+                      type="button"
+                      onClick={() => handleDelete(current.id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               )
