@@ -35,3 +35,12 @@ table td button {
   border: none;
   cursor: pointer;
 }
+
+.search {
+  width: 685px;
+  height: 30px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 2px solid;
+}

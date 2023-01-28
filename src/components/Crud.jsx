@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddList from "./AddList";
 import EditList from "./EditList";
+
 import "./Crud.css";
 
 export default function Crud() {
@@ -19,6 +20,7 @@ export default function Crud() {
 
   const [lists, setLists] = useState(list);
   const [updateState, setUpdateState] = useState(-1);
+  const [search, setSearch] = useState("");
 
   function handleEdit(id) {
     setUpdateState(id);
@@ -48,64 +50,81 @@ export default function Crud() {
     <div className="crud">
       <div>
         <AddList setLists={setLists} />
+        <input
+          type="text"
+          placeholder="Search job.."
+          className="search"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        ;
         <form onSubmit={handleSubmit}>
           <table>
-            {strDescending.map((current) =>
-              updateState === current.id ? (
-                <EditList current={current} lists={lists} setLists={setLists} />
-              ) : (
-                <tr>
-                  <td
-                    style={{
-                      backgroundColor:
-                        current.priority === "Urgent"
-                          ? "red"
-                          : current.priority === "Regular"
-                          ? "#FFD700"
-                          : "lightblue",
-                    }}
-                  >
-                    {current.job}
-                  </td>
-                  <td
-                    style={{
-                      backgroundColor:
-                        current.priority === "Urgent"
-                          ? "red"
-                          : current.priority === "Regular"
-                          ? "#FFD700"
-                          : "lightblue",
-                    }}
-                  >
-                    {current.priority}
-                  </td>
-                  <td
-                    style={{
-                      backgroundColor:
-                        current.priority === "Urgent"
-                          ? "red"
-                          : current.priority === "Regular"
-                          ? "#FFD700"
-                          : "lightblue",
-                    }}
-                  >
-                    <button
-                      className="edit"
-                      onClick={() => handleEdit(current.id)}
+            {strDescending
+              .filter((current) => {
+                return search.toLocaleLowerCase() === ""
+                  ? current
+                  : current.job.toLowerCase().includes(search);
+              })
+              .map((current) =>
+                updateState === current.id ? (
+                  <EditList
+                    current={current}
+                    lists={lists}
+                    setLists={setLists}
+                  />
+                ) : (
+                  <tr>
+                    <td
+                      style={{
+                        backgroundColor:
+                          current.priority === "Urgent"
+                            ? "red"
+                            : current.priority === "Regular"
+                            ? "#FFD700"
+                            : "lightblue",
+                      }}
                     >
-                      Edit
-                    </button>
-                    <button
-                      className="delete"
-                      type="button"
-                      onClick={() => handleDelete(current.id)}
+                      {current.job}
+                    </td>
+                    <td
+                      style={{
+                        backgroundColor:
+                          current.priority === "Urgent"
+                            ? "red"
+                            : current.priority === "Regular"
+                            ? "#FFD700"
+                            : "lightblue",
+                      }}
                     >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              )
-            )}
+                      {current.priority}
+                    </td>
+                    <td
+                      style={{
+                        backgroundColor:
+                          current.priority === "Urgent"
+                            ? "red"
+                            : current.priority === "Regular"
+                            ? "#FFD700"
+                            : "lightblue",
+                      }}
+                    >
+                      <button
+                        className="edit"
+                        onClick={() => handleEdit(current.id)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="delete"
+                        type="button"
+                        onClick={() => handleDelete(current.id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                )
+              )}
           </table>
         </form>
       </div>
