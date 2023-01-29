@@ -10,11 +10,19 @@ export default function Crud() {
       id: "1",
       job: "My job name 1",
       priority: "Urgent",
+      priorityNum: 1,
     },
     {
       id: "2",
       job: "My job name 2",
       priority: "Regular",
+      priorityNum: 2,
+    },
+    {
+      id: "3",
+      job: "My job name 3",
+      priority: "Trivial",
+      priorityNum: 3,
     },
   ];
 
@@ -42,14 +50,16 @@ export default function Crud() {
     setUpdateState(-1);
   }
 
-  const strDescending = [...lists].sort((a) =>
-    a.priority === "Urgent" ? -1 : 1
+  const strDescending = [...lists].sort(
+    (a, b) => a.priorityNum - b.priorityNum
   );
+
+  console.log(lists);
 
   return (
     <div className="crud">
       <div>
-        <AddList setLists={setLists} />
+        <AddList setLists={setLists} lists={lists} />
         <input
           type="text"
           placeholder="Search job.."
@@ -61,7 +71,7 @@ export default function Crud() {
           <table>
             {strDescending
               .filter((current) => {
-                return search.toLocaleLowerCase() === ""
+                return search.toLowerCase() === ""
                   ? current
                   : current.job.toLowerCase().includes(search);
               })

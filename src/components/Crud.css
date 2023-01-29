@@ -30,6 +30,8 @@ table td button {
 
 .addForm button {
   width: 140px;
+  height: 30px;
+  font-size: 16px;
   color: white;
   background-color: lightgreen;
   border: none;
@@ -43,4 +45,10 @@ table td button {
   margin-bottom: 10px;
   border: none;
   border-bottom: 2px solid;
+}
+
+.priority {
+  width: 220px;
+  height: 30px;
+  margin-right: 10px;
 }
