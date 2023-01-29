@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddList from "./AddList";
 import EditList from "./EditList";
 
-import "./Crud.css";
+import "./style.css";
 
 export default function Crud() {
   const list = [
