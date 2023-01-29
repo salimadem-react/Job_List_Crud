@@ -81,6 +81,7 @@ export default function Crud() {
                     current={current}
                     lists={lists}
                     setLists={setLists}
+                    trigger={true}
                   />
                 ) : (
                   <tr>
@@ -119,7 +120,7 @@ export default function Crud() {
                       }}
                     >
                       <button
-                        className="edit"
+                        className="editBtn"
                         onClick={() => handleEdit(current.id)}
                       >
                         Edit

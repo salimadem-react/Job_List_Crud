@@ -25,7 +25,8 @@ export default function AddList({ setLists, lists }) {
       <label>
         Job:
         <input
-          maxlength="10"
+          pattern="^[a-zA-Z\s]*$"
+          maxlength="70"
           type="text"
           name="job"
           placeholder="Enter job name"

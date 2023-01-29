@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function EditList({ current, lists, setLists }) {
+export default function EditList({ current, lists, setLists, trigger }) {
   function handInputPriority(e) {
     const value = e.target.value;
     const newlist = lists.map((li) =>
@@ -10,19 +10,25 @@ export default function EditList({ current, lists, setLists }) {
     setLists(newlist);
   }
   return (
-    <tr>
-      <td></td>
-      <td>
-        <input
-          type="text"
-          onChange={handInputPriority}
-          name="priority"
-          value={current.priority}
-        />
-      </td>
-      <td>
-        <button type="submit">Update</button>
-      </td>
-    </tr>
+    trigger && (
+      <div className="edit">
+        <div className="edit-inner">
+          <select
+            onChange={handInputPriority}
+            name="priority"
+            value={current.priority}
+            className="edit-priority"
+          >
+            <option value="Urgent">Urgent</option>
+            <option value="Regular">Regular</option>
+            <option value="Trivial">Trivial</option>
+          </select>
+
+          <button type="submit" className="update-btn">
+            Update
+          </button>
+        </div>
+      </div>
+    )
   );
 }
