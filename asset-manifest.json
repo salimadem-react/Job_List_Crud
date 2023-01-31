@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Job_List_Crud/static/css/main.dee755c2.css",
+    "main.js": "/Job_List_Crud/static/js/main.a8c47b14.js",
+    "index.html": "/Job_List_Crud/index.html",
+    "main.dee755c2.css.map": "/Job_List_Crud/static/css/main.dee755c2.css.map",
+    "main.a8c47b14.js.map": "/Job_List_Crud/static/js/main.a8c47b14.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dee755c2.css",
+    "static/js/main.a8c47b14.js"
+  ]
+}
